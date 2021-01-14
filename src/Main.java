@@ -15,37 +15,105 @@ public class Main {
 		System.out.println("Polinom N");
 		System.out.println(N);
 
-		System.out.println();
-		System.out.println();
-		System.out.println("A + B:");
-		System.out.println();
-		temp.Add(A, B);
-		System.out.println(temp);
+		long avTime = 0;
+		String str = "";
+		for (int j = 0; j < 100; j++) {
+			long startTime = System.nanoTime();
 
+			temp.Add(A, B);
+			j++;
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime);
+			avTime = avTime + duration;
+			str = temp.toString();
+			temp.Null();
+		}
+		avTime = avTime/100;
 		System.out.println();
-		System.out.println("A * B:");
 		System.out.println();
-		temp.Mul(A, B);
-		System.out.println(temp);
+		System.out.println("A + B: ");
+		System.out.println(str);
+		System.out.println("Time of work <A + B> is: " + avTime);
+		avTime = 0;	
+		str = "";
+		
+		for (int j = 0; j < 100; j++) {
+			long startTime = System.nanoTime();
 
+			temp.Mul(A, B);
+			j++;
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime);
+			avTime = avTime + duration;
+			str = temp.toString();
+			temp.Null();
+		}
+		avTime = avTime/100;
+		System.out.println();
+		System.out.println("A * B: ");
+		System.out.println(str);
+		System.out.println("Time of work <A * B> is: " + avTime);
+		avTime = 0;	
+		str = "";
+
+		for (int j = 0; j < 100; j++) {
+			long startTime = System.nanoTime();
+
+			temp.Replace(A);
+			temp.Mul(temp, temp);
+			j++;
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime);
+			avTime = avTime + duration;
+			str = temp.toString();
+			temp.Null();
+		}
+		avTime = avTime/100;
 		System.out.println();
 		System.out.println("A ^ 2:");
-		System.out.println();
-		temp.Replace(A);
-		temp.Mul(temp, temp);
-		System.out.println(temp);
+		System.out.println(str);
+		System.out.println("Time of work <A ^ 2> is: " + avTime);
+		avTime = 0;	
+		str = "";
+		
+		for (int j = 0; j < 100; j++) {
+			long startTime = System.nanoTime();
 
+			temp.Inverse(A);
+			j++;
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime);
+			avTime = avTime + duration;
+			str = temp.toString();
+			temp.Null();
+		}
+		avTime = avTime/100;
 		System.out.println();
 		System.out.println("A ^ (-1):");
-		System.out.println();
-		temp.Inverse(A);
-		System.out.println(temp);
+		System.out.println(str);
+		System.out.println("Time of work <A ^ (-1)> is: " + avTime);
+		avTime = 0;	
+		str = "";
 
+		for (int j = 0; j < 100; j++) {
+			long startTime = System.nanoTime();
+
+			temp.Pow(A, N);
+			j++;
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime);
+			avTime = avTime + duration;
+			str = temp.toString();
+			temp.Null();
+		}
+		avTime = avTime/100;
 		System.out.println();
 		System.out.println("A ^ N:");
-		System.out.println();
-		temp.Pow(A, N);
-		System.out.println(temp);
+		System.out.println(str);
+		System.out.println("Time of work <A ^ N> is: " + avTime);
+		avTime = 0;	
+		str = "";
+
 
 		System.out.println();
 		System.out.println();
